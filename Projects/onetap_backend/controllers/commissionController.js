@@ -2,14 +2,14 @@ const db = require('../config/db');
 
 // Calculer les commissions
 exports.calculerCommission = (montant) => {
-  const commission_plateforme = montant * 0.01; // 1%
-  const commission_createur = montant * 0.02; // 2%
-  const montant_net = montant * 0.97; // 97%
+  const commission_plateforme = 0; // 0%
+  const commission_createur = parseFloat((montant * 0.05).toFixed(2)); // 5%
+  const montant_net = parseFloat(montant.toFixed(2)); // Montant versé au coffre
   
   return {
-    commission_plateforme: parseFloat(commission_plateforme.toFixed(2)),
-    commission_createur: parseFloat(commission_createur.toFixed(2)),
-    montant_net: parseFloat(montant_net.toFixed(2)),
+    commission_plateforme: commission_plateforme,
+    commission_createur: commission_createur,
+    montant_net: montant_net,
   };
 };
 
